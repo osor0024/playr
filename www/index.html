@@ -3,30 +3,38 @@
     <head>
         <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'
          data: gap: https://ssl.gstatic.com 'unsafe-eval';
-        style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+         style-src 'self' 'unsafe-inline' use.fontawesome.com; 
+          img-src 'self' data: content: font-src 'self' data: https://use.fontawesome.com/releases/v5.7.1/css/all.css;"> -->
+
+        <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self' data: gap: 'unsafe-eval' ws: ;
+         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/;
+         img-src 'self' data: content: ;
+         font-src 'self' data: https://fonts.gstatic.com/ https://fonts.googleapis.com/;">
+<!--
+        <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self' data: gap: 'unsafe-eval' ws: ; 
+        style-src 'self' 'unsafe-inline'; 
+        script-src https: *.example.com ;
+        media-src 'none'; 
+        font-src *;
+        connect-src *;
+        img-src 'self' data: content:;">
+-->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <title>Playr</title>
     </head>
     <body>
         <header>
          <h1>Jazz</h1>
         </header>
-        <div class="app">  
-          
-           <i class="fas fa-play-circle" id="play-btn"></i>
-<i class="fa fa-pause" id="pause-btn"></i>
-<i class="fas fa-volume-up" id="up-btn"></i>
-<i class="fas fa-volume-down" id="down-btn"></i>
-<i class="fas fa-forward" id="btn-fast"></i>
-<i class="fas fa-backward" id= "rew-btn"></i>
-        </div>
-        
+               
          <section class="page" id="home">
+             
            <ul class="music-list">
 
             <!-- link for the images: https://www.pexels.com/search/singer/ -->
@@ -42,8 +50,8 @@
                </li>
                  <li class="music-item" data-id="3">
                   <img class="music-img" src="img/pexels-photo-977971.jpeg" alt=""/>
-                  <h3 class="music-artist"> Kelechi-Africana</h3>
-                  <h4 class="music-title"> Moyo-wangu</h4>
+                  <h3 class="music-artist"> Kelechi Africana</h3>
+                  <h4 class="music-title"> Moyo wangu</h4>
                </li>
                  <li class="music-item" data-id="4">
                   <img class="music-img" src="img/pexels-photo-1065023.jpeg" alt=""/>
@@ -67,7 +75,27 @@
     
         </div>
     </div>
+    <footer class="footer" id="footerid">  
+          <div id="content">
+
+        <!-- <i class="fas fa-backward" id= "rew-btn"></i> -->
+        <i class="material-icons" id= "rew-btn">fast_rewind</i>
+        <!-- <i class="fas fa-play-circle" id="play-btn"></i> -->
+        <i class="material-icons" id="play-btn">play_circle_filled</i>
+        <!-- <i class="fa fa-pause" id="pause-btn"></i> -->
+        <i class="material-icons" id="pause-btn">pause_circle_filled</i>
+        <!-- <i class="fas fa-forward" id="btn-fast"></i> -->
+        <i class="material-icons" id="btn-fast">fast_forward</i>
+        <!-- <i class="fas fa-volume-up" id="up-btn"></i> -->
+        <i class="material-icons" id="up-btn">volume_up</i>
+        <!-- <i class="fas fa-volume-down" id="down-btn"></i> -->
+        <i class="material-icons" id="down-btn">volume_down</i>
         
+        
+          </div>
+        
+     </footer>
+    
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </body>

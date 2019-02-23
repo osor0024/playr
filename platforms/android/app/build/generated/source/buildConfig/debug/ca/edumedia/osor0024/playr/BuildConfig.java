@@ -1,11 +1,11 @@
 /**
  * Automatically generated file. DO NOT MODIFY
  */
-package ca.edumedia.osor0024.remembrall;
+package ca.edumedia.osor0024.playr;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");
-  public static final String APPLICATION_ID = "ca.edumedia.osor0024.remembrall";
+  public static final String APPLICATION_ID = "ca.edumedia.osor0024.playr";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 10000;

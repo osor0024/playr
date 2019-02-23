@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package ca.edumedia.osor0024.remembrall;
+package ca.edumedia.osor0024.playr;
 
 public final class R {
   public static final class drawable {

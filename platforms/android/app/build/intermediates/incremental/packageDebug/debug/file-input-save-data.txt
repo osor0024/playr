@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Feb 12 15:13:06 EST 2019
+#Wed Feb 13 21:30:36 EST 2019
 5.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 42.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 22.path=www/media/Blacktone-One-day.mp3
@@ -46,7 +46,7 @@
 13.set=ASSET
 2.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 8.baseType=DIRECTORY
-47.path=www/img/user-297330_1280.png
+47.path=classes.dex
 6.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 43.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 4.set=ASSET
@@ -55,8 +55,7 @@
 33.path=www/plugins/cordova-plugin-file/www/FileReader.js
 17.path=www/plugins/cordova-plugin-file/www/DirectoryReader.js
 31.set=ASSET
-47.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
-48.baseType=DIRECTORY
+47.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 39.baseType=DIRECTORY
 20.baseType=DIRECTORY
 27.path=www/img/pexels-photo-838685.jpeg
@@ -69,7 +68,7 @@
 13.path=www/cordova_plugins.js
 17.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 27.set=ASSET
-count=49
+count=48
 27.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 16.set=ASSET
 37.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
@@ -95,7 +94,6 @@ count=49
 40.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 20.path=www/plugins/cordova-plugin-file/www/FileError.js
 12.set=ASSET
-48.path=classes.dex
 30.path=www/media/Ayrosh-Settle-Down.mp3
 7.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 44.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
@@ -106,7 +104,6 @@ count=49
 18.path=www/img/pexels-photo-1065023.jpeg
 20.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 41.set=ASSET
-48.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 28.path=www/plugins/cordova-plugin-file/www/FileWriter.js
 30.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 10.path=www/plugins/cordova-plugin-file/www/FileUploadOptions.js
@@ -115,7 +112,6 @@ count=49
 38.path=www/cordova.js
 32.baseType=DIRECTORY
 30.set=ASSET
-48.set=DEX
 24.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 34.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 1.baseType=DIRECTORY
@@ -174,7 +170,7 @@ count=49
 35.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 9.set=ASSET
 15.path=www/plugins/cordova-plugin-file/www/fileSystemPaths.js
-47.set=ASSET
+47.set=DEX
 19.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 4.baseType=DIRECTORY
 29.base=C\:\\Users\\natos\\Documents\\code\\playr\\platforms\\android\\app\\build\\intermediates\\assets\\debug

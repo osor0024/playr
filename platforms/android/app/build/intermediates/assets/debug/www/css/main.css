@@ -4,14 +4,44 @@
     box-sizing: border-box;
 }
 
-
+html{
+    padding: 0;
+    margin: 0;
+    height: 100%; 
+}
 body{
     background-color: #D9CEC6;
+    padding: 0;
+    margin: 0;
+    height: 100%; 
 }
 header{
     height:50px;
     background-color:#0C1824;
     color:white;
+}
+
+.footer{
+
+    background-color: rgb(71, 83, 102);
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    z-index: 200;
+    bottom: 0;
+    right: 0;
+}
+.bigFooter{
+    position: fixed;
+    width: 100%;
+    height: 180px;
+    z-index: 200;
+    bottom: 0;
+    right: 0;
+}
+#content{
+
+    text-align: center;
 }
 .fa.fa-play-circle{
     font-size:2rem;
@@ -22,8 +52,22 @@ img{
     max-width: 10rem;
     margin:2rem;
 }
+.imgModal{
+    display: block;
+    margin-left: auto;
+  margin-right: auto;
+}
+#outPutItem{
+    text-align: center;
+}
 li, i{
     cursor: pointer;
+}
+i{
+    font-size:2rem;
+}
+#play-btn{
+    color: red;
 }
 .music-item{
     border-bottom: solid 1rem gray;
@@ -44,19 +88,6 @@ li, i{
     padding: 1rem;
 }
 
-
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-}
-
-
 .modal {
     position: fixed;
     width: 100%;
@@ -66,10 +97,10 @@ li, i{
     left: 0;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.5;
-    color: #555;
-    border: solid 2px #555;
-    border-radius: 10px;
-    background-color: #D2CDDB;
+    color:white;
+    /* border: solid 2px #555; */
+    /* border-radius: 10px; */
+    background-color: rgba(88, 84, 80, 0.99);
 }
 
 .modal h1 {

@@ -17,7 +17,7 @@
        under the License.
  */
 
-package ca.edumedia.osor0024.remembrall;
+package ca.edumedia.osor0024.playr;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

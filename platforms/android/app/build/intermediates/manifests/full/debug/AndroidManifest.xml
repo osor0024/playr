@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ca.edumedia.osor0024.remembrall"
+    package="ca.edumedia.osor0024.playr"
     android:hardwareAccelerated="true"
     android:versionCode="10000"
     android:versionName="1.0.0" >
@@ -30,7 +30,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true" >
         <activity
-            android:name="ca.edumedia.osor0024.remembrall.MainActivity"
+            android:name="ca.edumedia.osor0024.playr.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
             android:label="@string/activity_name"
             android:launchMode="singleTop"
@@ -45,7 +45,7 @@
 
         <provider
             android:name="org.apache.cordova.camera.FileProvider"
-            android:authorities="ca.edumedia.osor0024.remembrall.provider"
+            android:authorities="ca.edumedia.osor0024.playr.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
