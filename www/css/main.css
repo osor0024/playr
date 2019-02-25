@@ -16,8 +16,8 @@ body{
     height: 100%; 
 }
 header{
-    height:50px;
-    background-color:#0C1824;
+    height:58px;
+    background-color:#424543;
     color:white;
 }
 
@@ -51,6 +51,14 @@ img{
     border-radius:50% 50%;
     max-width: 10rem;
     margin:2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+.icon{
+     border-radius:0;
+    max-width: 5rem;
+    margin:1rem;
+    box-shadow: none;
+    
 }
 .imgModal{
     display: block;
@@ -63,14 +71,28 @@ img{
 li, i{
     cursor: pointer;
 }
-i{
-    font-size:2rem;
+li{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.material-icons{
+    
+    font-size: 4rem;
+    font-size: 48px;
+    
 }
 #play-btn{
     color: red;
 }
+h3{
+    font-size: 1.8rem;
+    margin: 2rem;
+}
+h4{
+    margin: 0 2rem;
+    font-size: 1.2rem;
+}
 .music-item{
-    border-bottom: solid 1rem gray;
+    border-bottom: solid 1rem rgba(0, 0, 0, 0.0) ;
     display: grid;
     grid-template-areas: "a b"
                          "a c";

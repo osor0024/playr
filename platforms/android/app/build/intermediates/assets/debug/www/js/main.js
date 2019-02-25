@@ -46,6 +46,9 @@ var app = {
         '3': 'MEDIA_ERR_DECODE',
         '4': 'MEDIA_ERR_NONE_SUPPORTED'
     },
+     id: JSON.parse(localStorage.getItem("id")),
+       
+        
 
     init: function () {
         if (window.hasOwnProperty("cordova")) {
@@ -57,22 +60,22 @@ var app = {
 
 
     ready: function () {
-        app.x();
+        app.main();
         app.addListeners();
 
     },
 
-    x: function () {
+    main: function () {
         let liArray = document.querySelectorAll(".music-item");
 
         liArray.forEach(function (item) {
-            item.addEventListener("click", app.y);
+            item.addEventListener("click", app.clickedSong);
         });
 
     },
 
 
-    y: function (ev) {
+    clickedSong: function (ev) {
         let thEv = ev.currentTarget;
         let evId = thEv.getAttribute("data-id");
 
@@ -122,11 +125,12 @@ var app = {
         app.showModal();
         app.footerModal();
         
+        
     },
 
     ftw: function () {
 
-                
+       app.nextSong();
         console.log('success doing something');
     },
     wtf: function (err) {
@@ -135,63 +139,13 @@ var app = {
     },
     statusChange: function (status) {
         
-         let id = JSON.parse(localStorage.getItem("id"));
-        id = (id + 1);
-        console.log(id);
-        
-        
-    if (status === Media.MEDIA_STOPPED) {
-        
-     let nextInTrack = app.track.filter(track => {
-                if (track.id == id) {
-                    return true;
-                }
-            });
-        
-        let item = nextInTrack[0];
-        let src = item.src;
-        
-        if (app.media) {
-            app.media.stop();
-            app.media.release();
-            app.media = null;
+        if (status === Media.MEDIA_STOPPED){
+            for (i = 0; i <= 4; i++){
+                 app.id = (app.id + 1);
+                break;
+            }
+          
         }
-        if (id <= app.track.length){
-            app.media = new Media(src, app.statusChange);
-		    app.media.play();
-            
-            
-            let outputDiv = document.getElementById("outPutItem");
-        outputDiv.innerHTML = "";
-        let img = document.createElement("img");
-        let imgDiv = document.createElement("div");
-        let menuDiv = document.createElement("div");
-        let h1Author = document.createElement("h1");
-        let h2Title = document.createElement("h2");
-
-
-
-        img.src = item.imgSrc;
-        img.className = "imgModal"
-        h1Author.textContent = item.author;
-        h2Title.textContent = item.title;
-
-        outputDiv.appendChild(menuDiv);
-        outputDiv.appendChild(imgDiv);
-        imgDiv.appendChild(img);
-        outputDiv.appendChild(h1Author);
-        outputDiv.appendChild(h2Title);
-            
-            
-             app.showModal();
-        app.footerModal();
-
-
-
-        }
-        
-    }
-    
 
         console.log('media status is now ' + app.status[status]);
     },
@@ -301,7 +255,83 @@ var app = {
         footer.classList.add("footer");
 
     },
+nextSong: function(){
+   
+    let current = app.track.current;
+    console.log(current);
+    app.media.getCurrentPosition((pos) => {
+            
+            console.log('current position Nat', pos)
+    
+    if (pos === -0.001){
+        
+        console.log("hola por fin");
+        
+        
+        console.log(app.id);
+        
+        
+   
+        
+     let nextInTrack = app.track.filter(track => {
+                if (track.id == app.id) {
+                    return true;
+                }
+            });
+        
+        let item = nextInTrack[0];
+        let src = item.src;
+        
+//        if (app.media) {
+//            app.media.stop();
+//            app.media.release();
+//            app.media = null;
+//        }
+        if (app.id > app.track.length){
+            
+            console.log("There is not more songs")
+        }
+        else{
+            app.media = new Media(src, app.ftw, app.wtf, app.statusChange);
+		    app.media.play();
+            
+            
+        let outputDiv = document.getElementById("outPutItem");
+        outputDiv.innerHTML = "";
+        let img = document.createElement("img");
+        let imgDiv = document.createElement("div");
+        let menuDiv = document.createElement("div");
+        let h1Author = document.createElement("h1");
+        let h2Title = document.createElement("h2");
 
+
+
+        img.src = item.imgSrc;
+        img.className = "imgModal"
+        h1Author.textContent = item.author;
+        h2Title.textContent = item.title;
+
+        outputDiv.appendChild(menuDiv);
+        outputDiv.appendChild(imgDiv);
+        imgDiv.appendChild(img);
+        outputDiv.appendChild(h1Author);
+        outputDiv.appendChild(h2Title);
+            
+            
+        app.showModal();
+        app.footerModal();
+
+
+        
+    }
+   
+    }
+        
+        
+        });
+    
+ 
+}
 };
 
 app.init();
