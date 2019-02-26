@@ -32,6 +32,7 @@ var app = {
 
     }],
     volume: 0.5,
+    idCurrent: 0,
     media: null,
     status: {
         '0': 'MEDIA_NONE',
@@ -46,9 +47,9 @@ var app = {
         '3': 'MEDIA_ERR_DECODE',
         '4': 'MEDIA_ERR_NONE_SUPPORTED'
     },
-     id: JSON.parse(localStorage.getItem("id")),
-       
-        
+    id: JSON.parse(localStorage.getItem("id")),
+
+
 
     init: function () {
         if (window.hasOwnProperty("cordova")) {
@@ -81,18 +82,24 @@ var app = {
 
 
         let currentTrack = app.track.filter(track => {
-                if (track.id == evId) {
-                    return true;
-                }
-            });
-        
+            if (track.id == evId) {
+                return true;
+            }
+        });
+
         let item = currentTrack[0];
         let src = item.src;
         let id = item.id;
+
+    
+        console.log(id);
+        app.idCurrent = id;
+        console.log("Current value is",app.idCurrent);
+        
         
         localStorage.setItem("id", JSON.stringify(id));
 
-        let outputDiv = document.getElementById("outPutItem");
+        let outputDiv = document.querySelector("#outPutItem");
         outputDiv.innerHTML = "";
         let img = document.createElement("img");
         let imgDiv = document.createElement("div");
@@ -120,38 +127,44 @@ var app = {
             app.media.release();
             app.media = null;
         }
-        app.media = new Media(src, app.ftw, app.wtf, app.statusChange);
+        app.media = new Media(src, app.ftw, app.errorF, app.statusChange);
 
         app.showModal();
         app.footerModal();
-        
-        
+
+
     },
 
     ftw: function () {
 
-       app.nextSong();
+        app.nextSong();
         console.log('success doing something');
     },
-    wtf: function (err) {
+    errorF: function (err) {
         console.warn('failure');
         console.error(err);
     },
     statusChange: function (status) {
-        
-        if (status === Media.MEDIA_STOPPED){
-            for (i = 0; i <= 4; i++){
-                 app.id = (app.id + 1);
+
+        if (status === Media.MEDIA_STOPPED) {
+            for (i = 0; i <= 4; i++) {
+                app.id = (app.id + 1);
                 break;
             }
-          
+
         }
+//        
+//        if (status === Media.MEDIA_STARTING || status === Media.MEDIA_RUNNING) {
+//            app.removePlayBtn();
+//        } else{
+//            app.addPlayBtn();
+//        }
 
         console.log('media status is now ' + app.status[status]);
     },
     addListeners: function () {
-     
-        document.getElementById("backBtn").addEventListener("click", function () {
+
+        document.querySelector("#backBtn").addEventListener("click", function () {
             app.removeModal();
             app.removeFooter();
         });
@@ -168,9 +181,9 @@ var app = {
             console.log('clicked the menu button');
         });
         document.addEventListener('resume', () => {
-            app.media = new Media(src, app.ftw, app.wtf, app.statusChang);
+            app.media = new Media(src, app.ftw, app.errorF, app.statusChang);
         });
-        
+
     },
     play: function () {
         app.media.play();
@@ -232,7 +245,6 @@ var app = {
         modal.classList.add("on");
 
     },
-
     removeModal: function () {
         let modal = document.querySelector(".modal");
         modal.classList.remove("on");
@@ -241,97 +253,103 @@ var app = {
     },
 
     footerModal: function () {
-
         let footer = document.querySelector("#footerid");
         footer.classList.remove("footer");
         footer.classList.add("bigFooter");
 
     },
-
     removeFooter: function () {
-
         let footer = document.querySelector("#footerid");
         footer.classList.remove("bigFooter");
         footer.classList.add("footer");
 
     },
-nextSong: function(){
-   
-    let current = app.track.current;
-    console.log(current);
-    app.media.getCurrentPosition((pos) => {
-            
+//    removePlayBtn: function(){
+//        let playBtn = document.getElementById("play-btn");
+//        playBtn.classList.remove("on");
+//        playBtn.classList.add("off");
+//    },
+//    addPlayBtn: function(){
+//        let playBtn = document.getElementById("play-btn");
+//        playBtn.classList.remove("off");
+//        playBtn.classList.add("on");
+//        
+//    },
+    nextSong: function () {
+
+        console.log("Hola", app.idCurrent);
+    
+//        let current = app.track.current;
+//        console.log(current);
+        app.media.getCurrentPosition((pos) => {
+
             console.log('current position Nat', pos)
-    
-    if (pos === -0.001){
-        
-        console.log("hola por fin");
-        
-        
-        console.log(app.id);
-        
-        
-   
-        
-     let nextInTrack = app.track.filter(track => {
-                if (track.id == app.id) {
-                    return true;
+
+            if (pos == -0.001) {
+                
+//                app.addPlayBtn();
+
+                console.log("hola por fin");
+                console.log(app.id);
+
+                let nextInTrack = app.track.filter(track => {
+                    if (track.id == app.id) {
+                        return true;
+                    }
+                });
+
+                let item = nextInTrack[0];
+                let src = item.src;
+
+                //        if (app.media) {
+                //            app.media.stop();
+                //            app.media.release();
+                //            app.media = null;
+                //        }
+                if (app.id > app.track.length) {
+
+                    console.log("There is not more songs")
+                } else {
+                    app.media = new Media(src, app.ftw, app.errorF, app.statusChange);
+                    app.media.play();
+
+
+                    let outputDiv = document.querySelector("#outPutItem");
+                    outputDiv.innerHTML = "";
+                    let img = document.createElement("img");
+                    let imgDiv = document.createElement("div");
+                    let menuDiv = document.createElement("div");
+                    let h1Author = document.createElement("h1");
+                    let h2Title = document.createElement("h2");
+
+
+
+                    img.src = item.imgSrc;
+                    img.className = "imgModal"
+                    h1Author.textContent = item.author;
+                    h2Title.textContent = item.title;
+
+                    outputDiv.appendChild(menuDiv);
+                    outputDiv.appendChild(imgDiv);
+                    imgDiv.appendChild(img);
+                    outputDiv.appendChild(h1Author);
+                    outputDiv.appendChild(h2Title);
+
+
+                    app.showModal();
+                    app.footerModal();
+
+
+
                 }
-            });
-        
-        let item = nextInTrack[0];
-        let src = item.src;
-        
-//        if (app.media) {
-//            app.media.stop();
-//            app.media.release();
-//            app.media = null;
-//        }
-        if (app.id > app.track.length){
-            
-            console.log("There is not more songs")
-        }
-        else{
-            app.media = new Media(src, app.ftw, app.wtf, app.statusChange);
-		    app.media.play();
-            
-            
-        let outputDiv = document.getElementById("outPutItem");
-        outputDiv.innerHTML = "";
-        let img = document.createElement("img");
-        let imgDiv = document.createElement("div");
-        let menuDiv = document.createElement("div");
-        let h1Author = document.createElement("h1");
-        let h2Title = document.createElement("h2");
+
+            }
 
 
-
-        img.src = item.imgSrc;
-        img.className = "imgModal"
-        h1Author.textContent = item.author;
-        h2Title.textContent = item.title;
-
-        outputDiv.appendChild(menuDiv);
-        outputDiv.appendChild(imgDiv);
-        imgDiv.appendChild(img);
-        outputDiv.appendChild(h1Author);
-        outputDiv.appendChild(h2Title);
-            
-            
-        app.showModal();
-        app.footerModal();
-
-
-        
-    }
-   
-    }
-        
-        
         });
-    
- 
-}
+
+
+    }
 };
 
 app.init();

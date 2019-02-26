@@ -10,20 +10,20 @@ html{
     height: 100%; 
 }
 body{
-    background-color: #D9CEC6;
+    background-color: #1D243B;
     padding: 0;
     margin: 0;
     height: 100%; 
 }
 header{
     height:58px;
-    background-color:#424543;
-    color:white;
+    background-color:#2B2E5C;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .footer{
 
-    background-color: rgb(71, 83, 102);
+    background-color: #3A4561;
     position: fixed;
     width: 100%;
     height: 40px;
@@ -73,6 +73,7 @@ li, i{
 }
 li{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+/*     border-bottom:5px dashed #DB73FB;*/
 }
 .material-icons{
     
@@ -81,15 +82,19 @@ li{
     
 }
 #play-btn{
-    color: red;
+    color: #C553E9;
 }
 h3{
     font-size: 1.8rem;
     margin: 2rem;
+    margin-bottom: 0;
+    color: #FCFFFF;
+    text-shadow: 3px 3px black;
 }
 h4{
     margin: 0 2rem;
     font-size: 1.2rem;
+    color:#858A9D;
 }
 .music-item{
     border-bottom: solid 1rem rgba(0, 0, 0, 0.0) ;
@@ -109,7 +114,9 @@ h4{
     grid-area: c;
     padding: 1rem;
 }
-
+#backBtn{
+    margin: 1rem;
+}
 .modal {
     position: fixed;
     width: 100%;
