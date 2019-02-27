@@ -22,11 +22,10 @@ header{
 }
 
 .footer{
-
     background-color: #3A4561;
     position: fixed;
     width: 100%;
-    height: 40px;
+    height: 45px;
     z-index: 200;
     bottom: 0;
     right: 0;
@@ -43,10 +42,7 @@ header{
 
     text-align: center;
 }
-.fa.fa-play-circle{
-    font-size:2rem;
-    color:black;
-}
+
 img{
     border-radius:50% 50%;
     max-width: 10rem;
@@ -77,8 +73,8 @@ li{
 }
 .material-icons{
     
-    font-size: 4rem;
-    font-size: 48px;
+   
+    font-size: 42px;
     
 }
 #play-btn{
@@ -124,12 +120,12 @@ h4{
     z-index: 200;
     top: 0;
     left: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+/*    font-family: Roboto, Helvetica, Arial, sans-serif;*/
     line-height: 1.5;
     color:white;
     /* border: solid 2px #555; */
     /* border-radius: 10px; */
-    background-color: rgba(88, 84, 80, 0.99);
+    background-color: rgba(58, 69, 97, 0.99);
 }
 
 .modal h1 {
@@ -147,4 +143,9 @@ h4{
     transform: translateY(0);
 }
 
-
+.on2{
+    display: block;
+}
+.off2{
+    display:none;
+}

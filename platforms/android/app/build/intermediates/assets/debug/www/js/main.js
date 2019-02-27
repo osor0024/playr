@@ -99,7 +99,7 @@ var app = {
         
         localStorage.setItem("id", JSON.stringify(id));
 
-        let outputDiv = document.getElementById("outPutItem");
+        let outputDiv = document.querySelector("#outPutItem");
         outputDiv.innerHTML = "";
         let img = document.createElement("img");
         let imgDiv = document.createElement("div");
@@ -127,7 +127,7 @@ var app = {
             app.media.release();
             app.media = null;
         }
-        app.media = new Media(src, app.ftw, app.wtf, app.statusChange);
+        app.media = new Media(src, app.ftw, app.errorF, app.statusChange);
 
         app.showModal();
         app.footerModal();
@@ -140,11 +140,19 @@ var app = {
         app.nextSong();
         console.log('success doing something');
     },
-    wtf: function (err) {
+    errorF: function (err) {
         console.warn('failure');
         console.error(err);
     },
     statusChange: function (status) {
+        
+        if (status === Media.MEDIA_STARTING || status === Media.MEDIA_RUNNING) {
+            console.log("I'm showing pausebtn")
+            app.showPause();
+        } else{
+            app.showPlay();
+            console.log("I'm showing playbtn")
+        }
 
         if (status === Media.MEDIA_STOPPED) {
             for (i = 0; i <= 4; i++) {
@@ -153,18 +161,12 @@ var app = {
             }
 
         }
-//        
-//        if (status === Media.MEDIA_STARTING || status === Media.MEDIA_RUNNING) {
-//            app.removePlayBtn();
-//        } else{
-//            app.addPlayBtn();
-//        }
 
         console.log('media status is now ' + app.status[status]);
     },
     addListeners: function () {
 
-        document.getElementById("backBtn").addEventListener("click", function () {
+        document.querySelector("#backBtn").addEventListener("click", function () {
             app.removeModal();
             app.removeFooter();
         });
@@ -181,7 +183,7 @@ var app = {
             console.log('clicked the menu button');
         });
         document.addEventListener('resume', () => {
-            app.media = new Media(src, app.ftw, app.wtf, app.statusChang);
+            app.media = new Media(src, app.ftw, app.errorF, app.statusChang);
         });
 
     },
@@ -264,17 +266,21 @@ var app = {
         footer.classList.add("footer");
 
     },
-//    removePlayBtn: function(){
-//        let playBtn = document.getElementById("play-btn");
-//        playBtn.classList.remove("on");
-//        playBtn.classList.add("off");
-//    },
-//    addPlayBtn: function(){
-//        let playBtn = document.getElementById("play-btn");
-//        playBtn.classList.remove("off");
-//        playBtn.classList.add("on");
-//        
-//    },
+    showPlay: function(){
+        let playBtn = document.querySelector("#play-btn");
+        let pauseBtn = document.querySelector("#pause-btn");
+     //  playBtn.textContent='play_circle_filled';
+        playBtn.classList.remove("off2");
+        pauseBtn.classList.add("off2");
+    },
+    showPause: function(){
+        let playBtn = document.querySelector("#play-btn");
+        let pauseBtn = document.querySelector("#pause-btn");
+       // playBtn.textContent='pause_circle_filled'
+        pauseBtn.classList.remove("off2");
+        playBtn.classList.add("off2");
+        
+    },
     nextSong: function () {
 
         console.log("Hola", app.idCurrent);
@@ -310,11 +316,11 @@ var app = {
 
                     console.log("There is not more songs")
                 } else {
-                    app.media = new Media(src, app.ftw, app.wtf, app.statusChange);
+                    app.media = new Media(src, app.ftw, app.errorF, app.statusChange);
                     app.media.play();
 
 
-                    let outputDiv = document.getElementById("outPutItem");
+                    let outputDiv = document.querySelector("#outPutItem");
                     outputDiv.innerHTML = "";
                     let img = document.createElement("img");
                     let imgDiv = document.createElement("div");

@@ -145,6 +145,14 @@ var app = {
         console.error(err);
     },
     statusChange: function (status) {
+        
+        if (status === Media.MEDIA_STARTING || status === Media.MEDIA_RUNNING) {
+            console.log("I'm showing pausebtn")
+            app.showPause();
+        } else{
+            app.showPlay();
+            console.log("I'm showing playbtn")
+        }
 
         if (status === Media.MEDIA_STOPPED) {
             for (i = 0; i <= 4; i++) {
@@ -153,12 +161,6 @@ var app = {
             }
 
         }
-//        
-//        if (status === Media.MEDIA_STARTING || status === Media.MEDIA_RUNNING) {
-//            app.removePlayBtn();
-//        } else{
-//            app.addPlayBtn();
-//        }
 
         console.log('media status is now ' + app.status[status]);
     },
@@ -264,17 +266,21 @@ var app = {
         footer.classList.add("footer");
 
     },
-//    removePlayBtn: function(){
-//        let playBtn = document.getElementById("play-btn");
-//        playBtn.classList.remove("on");
-//        playBtn.classList.add("off");
-//    },
-//    addPlayBtn: function(){
-//        let playBtn = document.getElementById("play-btn");
-//        playBtn.classList.remove("off");
-//        playBtn.classList.add("on");
-//        
-//    },
+    showPlay: function(){
+        let playBtn = document.querySelector("#play-btn");
+        let pauseBtn = document.querySelector("#pause-btn");
+     //  playBtn.textContent='play_circle_filled';
+        playBtn.classList.remove("off2");
+        pauseBtn.classList.add("off2");
+    },
+    showPause: function(){
+        let playBtn = document.querySelector("#play-btn");
+        let pauseBtn = document.querySelector("#pause-btn");
+       // playBtn.textContent='pause_circle_filled'
+        pauseBtn.classList.remove("off2");
+        playBtn.classList.add("off2");
+        
+    },
     nextSong: function () {
 
         console.log("Hola", app.idCurrent);
